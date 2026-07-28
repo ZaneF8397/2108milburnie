@@ -1,0 +1,12 @@
+{
+  "name": "footenote-customization-guide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generate a PDF from the customization guide HTML.",
+  "scripts": {
+    "generate:pdf": "node generate-pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^23.11.1"
+  }
+}

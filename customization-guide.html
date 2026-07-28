@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customization Guide | Footenote Estate</title>
+    <style>
+      :root {
+        --ink: #152126;
+        --muted: #546168;
+        --gold: #b38a2d;
+        --cream: #f7f0e3;
+        --line: #d8c8a4;
+        --panel: #fffdf8;
+      }
+
+      @page {
+        size: Letter portrait;
+        margin: 0;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        background: #f2efe8;
+        color: var(--ink);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 16px;
+      }
+
+      .sheet {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.45in 0.5in 0.72in;
+        background: linear-gradient(135deg, #fffdf8 0%, #f8f2e6 100%);
+        border: 1px solid var(--line);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 2px solid var(--line);
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+      }
+
+      .title-block h1 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      .title-block p {
+        margin: 4px 0 0;
+        font-size: 19px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+
+      .badge {
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(179, 138, 45, 0.08);
+      }
+
+      .intro {
+        margin: 0 0 10px;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 12px 18px;
+      }
+
+      .panel h2 {
+        margin: 0 0 8px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--gold);
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1.6fr 0.6fr;
+        gap: 10px;
+        align-items: start;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(216, 200, 164, 0.7);
+      }
+
+      .row:last-child { border-bottom: none; }
+
+      .name {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .desc {
+        display: block;
+        margin-top: 2px;
+        font-size: 9.5px;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+
+      .price {
+        text-align: right;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--ink);
+        white-space: nowrap;
+      }
+
+      .highlight {
+        background: linear-gradient(90deg, rgba(179,138,45,0.12), rgba(179,138,45,0.04));
+        border-radius: 8px;
+        padding: 6px 8px;
+        margin-bottom: 6px;
+      }
+
+      .allowance-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .allowance-list li {
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(216, 200, 164, 0.7);
+      }
+
+      .allowance-list li:last-child { border-bottom: none; }
+
+      .allowance-name {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .allowance-value {
+        display: block;
+        margin-top: 2px;
+        font-size: 10px;
+        color: var(--gold);
+      }
+
+      .footer {
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 2px solid var(--line);
+        font-size: 10px;
+        color: var(--muted);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .footnote {
+        font-size: 9px;
+        line-height: 1.45;
+        color: #6d757b;
+      }
+
+      @media print {
+        body { padding: 0; background: white; }
+        .sheet { box-shadow: none; border: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <header class="header">
+        <div class="title-block">
+          <h1>Signature Customization Guide</h1>
+          <p>2108 Milburnie Rd • Raleigh, North Carolina</p>
+        </div>
+      </header>
+
+      <p class="intro">
+        This curated selection of architectural enhancements and finish allowances is designed to help buyers shape a home that feels both timeless and personal. Each option is presented with a refined balance of luxury, livability, and value.
+      </p>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Featured Options</h2>
+
+          <div class="row">
+            <div>
+              <span class="name">Base Residence</span>
+              <span class="desc">A polished foundation of design, structure, and premium standard features.</span>
+            </div>
+            <div class="price">$875,000</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Attached 1-Car Garage</span>
+              <span class="desc">Practical elegance with sheltered access and everyday convenience.</span>
+            </div>
+            <div class="price">$35,000</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Crusher Run Parking Pad</span>
+              <span class="desc">An expanded hardscape welcome for guests, equipment, or extra vehicle parking.</span>
+            </div>
+            <div class="price">$3,800</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Grid-Tied Solar System</span>
+              <span class="desc">8.0 kW roof-mounted array with Tier-1 panels and a smart microinverter platform.</span>
+            </div>
+            <div class="price">$21,000</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Advanced Landscaping Package</span>
+              <span class="desc">A finished outdoor narrative of texture, shade, and seasonal curb appeal.</span>
+            </div>
+            <div class="price">$18,500</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Master Suite Cantilevered Deck</span>
+              <span class="desc">An elevated private retreat designed for sunrise views and quiet evenings.</span>
+            </div>
+            <div class="price">$19,500</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Elevated Lighting Design</span>
+              <span class="desc">Special allowance and install of custom lighting fixtures in the foyer, kitchen, and main bath.</span>
+            </div>
+            <div class="price">$14,000</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Smart Home Technology Package</span>
+              <span class="desc">Category 6 wiring, smart thermostats, smart deadbolts, Ring doorbell, and surround sound pre-wire.</span>
+            </div>
+            <div class="price">$4,500</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">Rear Encompassing Fence</span>
+              <span class="desc">A sturdy and attractive fence that encloses the rear of the property, providing privacy and security.</span>
+            </div>
+            <div class="price">$10,000</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <span class="name">EV Charger Prep</span>
+              <span class="desc">Dedicated 50-amp, 240V garage circuit with a NEMA 14-50 outlet for future charging.</span>
+            </div>
+            <div class="price">$1,500</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Standard Allowances</h2>
+          <ul class="allowance-list">
+            <li>
+              <span class="allowance-name">Interior Paint Allowance</span>
+              <span class="allowance-value">$6,500</span>
+            </li>
+            <li>
+              <span class="allowance-name">Countertop Allowance</span>
+              <span class="allowance-value">$12,000</span>
+            </li>
+            <li>
+              <span class="allowance-name">Tile Allowance</span>
+              <span class="allowance-value">$8,500</span>
+            </li>
+            <li>
+              <span class="allowance-name">Appliance Allowance</span>
+              <span class="allowance-value">$15,000</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Studio-Telos & Footenote, LLC. • 2026</span>
+        <div class="footnote">
+          This document is provided for indicative planning purposes only. Specific language, pricing, allowances, and scope will be available at the time of contract execution.
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
