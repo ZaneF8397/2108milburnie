@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2108 Milburnie Rd | Luxury Residence Brochure</title>
+  <style>
+    :root {
+      --charcoal: #1b2327;
+      --muted: #56646c;
+      --gold: #b78e38;
+      --line: rgba(183, 142, 56, 0.38);
+      --paper: #fffdf9;
+      --shadow: rgba(17, 22, 25, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #ece6dc;
+      color: var(--charcoal);
+      line-height: 1.4;
+    }
+
+    .page {
+      width: 11in;
+      height: 8.5in;
+      margin: 18px auto;
+      background: linear-gradient(180deg, #fffdf9 0%, #f5efe4 100%);
+      display: flex;
+      position: relative;
+      box-shadow: 0 14px 28px var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .panel {
+      height: 100%;
+      padding: 0.26in 0.22in 0.2in;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    .panel + .panel {
+      border-left: 1px solid rgba(183, 142, 56, 0.28);
+    }
+
+    .page .panel {
+      flex: 1 1 0;
+      min-width: 0;
+      width: 33.3333%;
+    }
+
+    .panel > div:not(.footer),
+    .panel > .cover-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .eyebrow {
+      font-size: 8pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8pt;
+    }
+
+    h1 {
+      font-size: 27pt;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 8pt;
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 11.5pt;
+      margin-bottom: 8pt;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 15pt;
+      line-height: 1.12;
+      margin-bottom: 8pt;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+
+    p, li, .price-line {
+      font-size: 8.6pt;
+      color: #485a63;
+      line-height: 1.5;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 8pt;
+    }
+
+    li {
+      position: relative;
+      padding-left: 10pt;
+      margin-bottom: 6pt;
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .cover-panel {
+      background: linear-gradient(180deg, rgba(15,20,23,0.18), rgba(15,20,23,0.55)), url('images/front-light-v1.jpg') center/cover no-repeat;
+      color: white;
+      padding: 0.28in 0.26in 0.2in;
+    }
+
+    .cover-panel h1,
+    .cover-panel p,
+    .cover-panel .eyebrow,
+    .cover-panel .mini-meta,
+    .cover-panel .mini-stat {
+      color: white;
+    }
+
+    .cover-panel .eyebrow { opacity: 0.9; }
+
+    .cover-content {
+      justify-content: flex-end;
+      z-index: 1;
+      position: relative;
+      min-height: 0;
+    }
+
+    .mini-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8pt;
+      margin-top: 16pt;
+    }
+
+    .mini-stat {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 10px;
+      padding: 8pt 6pt;
+      text-align: center;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 16pt;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .mini-stat span {
+      display: block;
+      margin-top: 4pt;
+      font-size: 7pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .thumb {
+      height: 1.9in;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 12pt;
+    }
+
+    .thumb-portrait {
+      flex: 1 1 0;
+      min-height: 2.75in;
+      height: auto;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-color: #ffffff;
+      margin-bottom: 10pt;
+    }
+
+    .thumb-living { background-image: url('images/livingroom-v1.jpg'); }
+    .thumb-kitchen { background-image: url('images/kitchen-v1.jpg'); }
+    .thumb-back { background-image: url('images/backyard-v1.jpg'); }
+    .thumb-map { background-image: url('images/maps-v1.png'); }
+    .thumb-bath { background-image: url('images/bathroom1-v1.jpg'); }
+    .thumb-sideev { background-image: url('images/side elevation 1-v1.jpg'); }
+    .thumb-frontev { background-image: url('images/front elevation-v1.jpg'); }
+    .thumb-backev { background-image: url('images/rear elevation-v1.jpg'); }
+    .thumb-first { background-image: url('images/f1-v1.png'); }
+    .thumb-second { background-image: url('images/f2-v1.png'); }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8pt;
+      margin-top: 10pt;
+    }
+
+    .fact {
+      background: rgba(183, 142, 56, 0.08);
+      border: 1px solid rgba(183, 142, 56, 0.2);
+      border-radius: 10px;
+      padding: 8pt 6pt;
+      text-align: center;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 17pt;
+      line-height: 1;
+      margin-bottom: 3pt;
+      color: var(--gold);
+    }
+
+    .fact span {
+      font-size: 7pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #53616b;
+    }
+
+    .quote-box {
+      background: rgba(183, 142, 56, 0.08);
+      border: 1px solid rgba(183, 142, 56, 0.22);
+      border-radius: 12px;
+      padding: 8pt 10pt;
+      font-size: 8.8pt;
+      color: var(--charcoal);
+      line-height: 1.45;
+      font-style: italic;
+    }
+
+    .location-panel {
+      justify-content: flex-start;
+    }
+
+    .location-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8pt;
+      width: 100%;
+    }
+
+    .raleigh-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6pt;
+      width: 100%;
+    }
+
+    .raleigh-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.35);
+      border: 1px solid rgba(183, 142, 56, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .raleigh-card img {
+      display: block;
+      width: 100%;
+      height: 1.2in;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(183, 142, 56, 0.2);
+    }
+
+    .raleigh-card h3 {
+      font-size: 8.8pt;
+      line-height: 1.3;
+      margin: 8pt 8pt 4pt;
+      letter-spacing: -0.01em;
+    }
+
+    .raleigh-card p {
+      margin: 0 8pt 8pt;
+      font-size: 6.8pt;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .location-copy {
+      margin: 0;
+      font-size: 7.1pt;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.85fr;
+      gap: 8pt;
+      margin-top: 6pt;
+      min-height: 0;
+      flex: 1;
+    }
+
+    .pricing-column {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .mini-caption {
+      margin: 0 0 6pt;
+      font-size: 7pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .base-inline {
+      margin: 0 0 8pt;
+      padding: 8pt 9pt;
+      background: rgba(183, 142, 56, 0.08);
+      border: 1px solid rgba(183, 142, 56, 0.22);
+      border-radius: 10px;
+    }
+
+    .base-inline strong {
+      display: block;
+      font-size: 10pt;
+      color: var(--charcoal);
+      margin-bottom: 3pt;
+    }
+
+    .base-inline span {
+      font-size: 15pt;
+      letter-spacing: -0.04em;
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+
+    .pricing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4pt;
+      margin-top: 2pt;
+      flex: 1;
+    }
+
+    .price-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6pt;
+      padding-bottom: 4pt;
+      border-bottom: 1px solid rgba(183, 142, 56, 0.15);
+      align-items: start;
+    }
+
+    .price-item:last-child {
+      border-bottom: none;
+    }
+
+    .price-item strong {
+      display: block;
+      font-size: 8.1pt;
+      line-height: 1.3;
+      color: var(--charcoal);
+      margin-bottom: 2pt;
+    }
+
+    .price-item p {
+      margin: 0;
+      font-size: 6.9pt;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .price-item .value {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 8pt;
+      white-space: nowrap;
+      padding-top: 1pt;
+    }
+
+    .pricing-column.accent {
+      background: rgba(183, 142, 56, 0.06);
+      border: 1px solid rgba(183, 142, 56, 0.22);
+      border-radius: 12px;
+      padding: 8pt 8pt 6pt;
+    }
+
+    .allowances {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .allowances li {
+      position: relative;
+      padding-left: 0;
+      margin: 0 0 4pt;
+      font-size: 7pt;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(183, 142, 56, 0.12);
+      padding-bottom: 4pt;
+    }
+
+    .allowances li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .allowances strong {
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: auto;
+      font-size: 7pt;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      padding-top: 8pt;
+      border-top: 1px solid rgba(183, 142, 56, 0.28);
+    }
+
+    @media print {
+      @page {
+        size: letter landscape;
+        margin: 0;
+      }
+
+      body {
+        background: none;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <section class="panel location-panel">
+      <div class="location-wrap">
+        <div class="eyebrow">Location</div>
+        <div class="raleigh-grid">
+          <div class="raleigh-card">
+            <img src="images/skyline-v1.jpg" alt="Raleigh skyline and neighborhood atmosphere">
+            <h3>Urban growth with neighborhood character</h3>
+            <p>Raleigh blends artful public spaces, established communities, and a forward-looking identity that feels welcoming and elevated.</p>
+          </div>
+          <div class="raleigh-card">
+            <img src="images/dix-v1.jpg" alt="Raleigh greenways and outdoor spaces">
+            <h3>Outdoor living at the center of daily life</h3>
+            <p>Greenways, parks, and easy access to nature make the city ideal for thoughtful, year-round living.</p>
+          </div>
+          <div class="raleigh-card">
+            <img src="images/maps-v1.png" alt="Raleigh dining and cultural scene">
+            <h3>A lifestyle rooted in refinement</h3>
+            <p>From fine dining to cultural institutions, Raleigh elevates everyday life with ease and sophistication.</p>
+          </div>
+        </div>
+        <p class="location-copy">The home sits at the heart of Raleigh, offering easy access to the city’s restaurants, parks, and cultural destinations. Downtown Raleigh is approximately two miles away, The Village District and Wake Medical are each around three miles, and nearby highlights including Pullen Park, Ironworks/Salvage Yard, and the State Fair are all within roughly 2.5 to 4 miles. It is a location shaped by convenience, character, and everyday ease.</p>
+      </div>
+      <div class="footer">2108milburnie.com</div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <div class="eyebrow">Pricing</div>
+        <h2>Estimated investment</h2>
+
+        <div class="pricing-grid">
+          <div class="pricing-column">
+            <div class="base-inline">
+              <strong>Base package</strong>
+              <span>$875,000</span>
+            </div>
+
+            <p class="mini-caption">Optional additions</p>
+            <div class="pricing-list">
+              <div class="price-item">
+                <div>
+                  <strong>Attached 1-Car Garage</strong>
+                  <p>Covered storage and protected access.</p>
+                </div>
+                <div class="value">$35,000</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Crusher Run Parking Pad</strong>
+                  <p>Guest and equipment parking area.</p>
+                </div>
+                <div class="value">$3,800</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Grid-Tied Solar System</strong>
+                  <p>8.0 kW array with smart inverter platform.</p>
+                </div>
+                <div class="value">$21,000</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Advanced Landscaping</strong>
+                  <p>Texture, shade, and seasonal curb appeal.</p>
+                </div>
+                <div class="value">$18,500</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Master Suite Deck</strong>
+                  <p>Private elevated retreat for sunrise and evening views.</p>
+                </div>
+                <div class="value">$19,500</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Lighting Design</strong>
+                  <p>Statement fixtures in key interior spaces.</p>
+                </div>
+                <div class="value">$14,000</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Smart Home Package</strong>
+                  <p>Connectivity, monitoring, and convenience.</p>
+                </div>
+                <div class="value">$4,500</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>Rear Fence</strong>
+                  <p>Privacy and security for the rear yard.</p>
+                </div>
+                <div class="value">$10,000</div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <strong>EV Charger Prep</strong>
+                  <p>240V circuit with 50-amp charging readiness.</p>
+                </div>
+                <div class="value">$1,500</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-column accent">
+            <p class="mini-caption">Included allowances</p>
+            <ul class="allowances">
+              <li><strong>Interior Paint</strong> • $6,500</li>
+              <li><strong>Countertops</strong> • $12,000</li>
+              <li><strong>Tile</strong> • $8,500</li>
+              <li><strong>Appliances</strong> • $15,000</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">2108milburnie.com</div>
+    </section>
+
+    <section class="panel cover-panel">
+      <div class="cover-content">
+        <div class="eyebrow">Refined custom living</div>
+        <h1>2108 Milburnie Rd</h1>
+        <p>A contemporary home shaped around light, gathering, and enduring comfort.</p>
+        <div class="mini-meta">
+          <div class="mini-stat"><strong>4</strong><span>Bedrooms</span></div>
+          <div class="mini-stat"><strong>3.5</strong><span>Baths</span></div>
+          <div class="mini-stat"><strong>2350</strong><span>Sq Ft</span></div>
+          <div class="mini-stat"><strong>Raleigh</strong><span>NC</span></div>
+        </div>
+      </div>
+      <div class="footer">2108milburnie.com</div>
+    </section>
+  </div>
+
+  <div class="page">
+    <section class="panel">
+      <div>
+        <div class="eyebrow">The home</div>
+        <h2>Interior & finish</h2>
+        <div class="thumb thumb-kitchen"></div>
+        <div class="thumb thumb-living"></div>
+        <div class="thumb thumb-bath"></div>
+        <p>The interior palette emphasizes durability, warmth, and elevated simplicity. The kitchen and baths pair purposeful functionality with a more refined aesthetic—bringing together polish, texture, and comfort in equal measure.</p>
+      </div>
+      <div class="footer">2108milburnie.com</div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <div class="eyebrow">The home</div>
+        <h2>Architecture & Elegance</h2>
+        <div class="thumb thumb-frontev"></div>
+        <div class="thumb thumb-backev"></div>
+        <div class="thumb thumb-sideev"></div>
+        <p>Each elevation showcases the home's architectural character from a unique perspective, a home built to compliment and enhance its surroundings.</p>
+      </div>
+      <div class="footer">2108milburnie.com</div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <div class="eyebrow">The home</div>
+        <h2>Ease & Function</h2>
+        <div class="thumb thumb-portrait thumb-first"></div>
+        <div class="thumb thumb-portrait thumb-second"></div>
+      </div>
+      <div class="footer">2108milburnie.com</div>
+    </section>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
